@@ -1,10 +1,33 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card.astro";
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="Ecomondo">
   <main>
-    <img src="/" />
+    <div class="container mx-auto">
+      <div class="grid md:grid-cols-2">
+        <div>
+          <img src="/ecomondo2024.webp" width="270" height="107" />
+          <p class="text-white text-sm font-bold">
+            La Feria de Tecnología Ambiental de Latinoamérica.
+          </p>
+          <p class="mt-10 text-white text-sm font-extrabold">
+            Del 17 al 19 abril de 2024<br />Expo Guadalajara
+          </p>
+          <p class="mt-10 text-white font-light text-2xl">
+            Soluciones ecológicas<br /> para un mundo más<br />verde
+          </p>
+          <img class="mt-20" src="/logo-igeco.webp" width="200" />
+        </div>
+        <div>
+          <img src="/world-ecomondo.webp" />
+        </div>
+      </div>
+    </div>
   </main>
 </Layout>
+<style>
+  main {
+    background-image: url("/bgecomondo.webp");
+  }
+</style>
