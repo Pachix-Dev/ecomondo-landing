@@ -18,7 +18,7 @@ export function ContactForm() {
     try {
       setSendStatus(true)
       const statusEmail = await fetch(
-        'https://hfmexico.mx/foro-electromovilidad/backend/email/send-email-agrotech',
+        'https://hfmexico.mx/foro-electromovilidad/backend/email/send-email-ecomondo',
         requestOptions
       )
       const dataEmail = await statusEmail.json()
@@ -84,6 +84,22 @@ export function ContactForm() {
             required
           />
         </div>
+        <div>
+          <label
+            htmlFor='email'
+            className='block mb-2 text-sm font-medium text-white'
+          >
+            Teléfono
+          </label>
+          <input
+            type='tel'
+            id='phone'
+            name='phone'
+            className='shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 '
+            placeholder='55 5555 5555'
+            required
+          />
+        </div>
         <div className='sm:col-span-2'>
           <label
             htmlFor='message'
@@ -113,7 +129,7 @@ export function ContactForm() {
                 cy='12'
                 r='10'
                 stroke='currentColor'
-                stroke-width='4'
+                strokeWidth='4'
               ></circle>
               <path
                 className='opacity-75'
