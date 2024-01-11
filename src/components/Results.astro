@@ -1,0 +1,105 @@
+<div class='home-activities mt-5 text-center'>
+  <div class='home-activities-wrapper'>
+    <div class='relative'>
+      <img
+        src='/visitantes.webp'
+        alt='fisicoconstructivismo'
+        draggable='false'
+      />
+      <p>
+        <span class='text-5xl'>+ 7,500</span><br /> Visitantes
+      </p>
+    </div>
+    <div class='relative'>
+      <img
+        src='/piso_expositor.webp'
+        alt='activacion crosstraing zumba'
+        draggable='false'
+      />
+      <p>
+        <span class='text-5xl'>13,000 M<sup>2</sup></span><br />Piso expositor
+      </p>
+    </div>
+    <div class='relative'>
+      <img
+        src='expositores.webp'
+        alt='talleres y conferencias de nutrición y bienestar'
+        draggable='false'
+      />
+      <p>
+        <span class='text-5xl'>+80</span><br />Expositores
+      </p>
+    </div>
+    <div class='relative'>
+      <img src='negocios.webp' alt='noche de adrenalina' draggable='false' />
+      <p>
+        <span class='text-5xl'>+ 462 MDP</span><br />En negocios en sitio<br
+        />(2023)
+      </p>
+    </div>
+    <div class='relative'>
+      <img
+        src='valor_comercial.webp'
+        alt='lanzamiento de startups hub'
+        draggable='false'
+      />
+      <p>
+        <span class='text-5xl'>+ 6 MDP</span><br />El valor comercial de <br
+        />cobertura mediática
+      </p>
+    </div>
+  </div>
+</div>
+<style>
+  .home-activities-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+    height: auto;
+  }
+
+  .home-activities-wrapper div {
+    width: 0;
+    height: 500px;
+    flex-grow: 1;
+    transition: 0.5s ease;
+    box-sizing: border-box;
+  }
+
+  .home-activities-wrapper div img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .home-activities-wrapper div:hover {
+    cursor: crosshair;
+    width: 300px;
+    opacity: 1 !important;
+  }
+
+  .home-activities-wrapper div:hover img {
+    opacity: 1 !important;
+  }
+
+  .home-activities-wrapper p {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    font-size: 23px;
+    color: white;
+    font-weight: bold;
+    background: linear-gradient(to bottom, transparent, black);
+    padding-bottom: 20px;
+    height: 140px;
+    text-shadow: 4px 4px 4px black;
+  }
+
+  @media (max-width: 768px) {
+    .home-activities-wrapper div {
+      width: 100%;
+      height: 300px;
+    }
+  }
+</style>
