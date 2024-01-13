@@ -27,6 +27,7 @@ export function ContactForm() {
         setResponse(
           '¡Gracias por contactarnos! En breve nos pondremos en contacto contigo.'
         )
+        window.location.href = '/gracias-por-contactarnos'
       } else {
         setSendStatus(false)
         setResponse(
@@ -113,6 +114,7 @@ export function ContactForm() {
             name='message'
             className='block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500'
             placeholder='Dejanos saber como podemos ayudarte...'
+            required
           ></textarea>
         </div>
         {sendStatus ? (
