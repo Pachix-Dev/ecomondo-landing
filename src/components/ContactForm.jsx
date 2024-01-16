@@ -1,7 +1,20 @@
 import { useState } from 'react'
+import { countrycodes } from '../lib/countrycodes'
+
 export function ContactForm() {
+  const [selectedCountryCode, setSelectedCountryCode] = useState('')
+  const [phoneNumber, setPhoneNumber] = useState('')
+
   const [response, setResponse] = useState('')
   const [sendStatus, setSendStatus] = useState(false)
+
+  const handleCountryCodeChange = (event) => {
+    setSelectedCountryCode(event.target.value)
+  }
+
+  const handlePhoneNumberChange = (event) => {
+    setPhoneNumber(event.target.value)
+  }
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -14,23 +27,33 @@ export function ContactForm() {
       },
       body: JSON.stringify({ formData }),
     }
-
     try {
       setSendStatus(true)
-      const statusEmail = await fetch(
-        'https://hfmexico.mx/foro-electromovilidad/backend/email/send-email-ecomondo',
+      const res = await fetch(
+        'https://hfmexico.mx/ecomondo/newsletter/landingPage.php',
         requestOptions
       )
-      const dataEmail = await statusEmail.json()
-      if (dataEmail.status) {
-        setSendStatus(false)
-        setResponse(
-          '¡Gracias por contactarnos! En breve nos pondremos en contacto contigo.'
+      const data = await res.json()
+      if (data.status) {
+        const statusEmail = await fetch(
+          'https://hfmexico.mx/foro-electromovilidad/backend/email/send-email-ecomondo',
+          requestOptions
         )
-        window.location.href = '/gracias-por-contactarnos'
+        const dataEmail = await statusEmail.json()
+        if (dataEmail.status) {
+          setSendStatus(false)
+          setResponse(
+            '¡Gracias por contactarnos! En breve nos pondremos en contacto contigo.'
+          )
+          window.location.href = '/gracias-por-contactarnos'
+        } else {
+          setSendStatus(false)
+          setResponse(
+            'Lo sentimos en este momento no es posible enviar tu información...'
+          )
+        }
       } else {
-        setSendStatus(false)
-        setResponse(
+        setMessage(
           'Lo sentimos en este momento no es posible enviar tu información...'
         )
       }
@@ -55,6 +78,31 @@ export function ContactForm() {
       >
         <div>
           <label
+            htmlFor='sector'
+            className='block mb-2 text-sm font-medium text-white'
+          >
+            Sector
+          </label>
+          <select
+            id='sector'
+            name='sector'
+            className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5'
+            required
+          >
+            <option value='' defaultValue>
+              Elige una opción
+            </option>
+            <option value='Manejo de residuos y economía circular'>
+              Manejo de residuos y economía circular
+            </option>
+            <option value='Bioenergía'>Bioenergía</option>
+            <option value='Cuidado y manejo del agua'>
+              Cuidado y manejo del agua
+            </option>
+          </select>
+        </div>
+        <div>
+          <label
             htmlFor='name'
             className='block mb-2 text-sm font-medium text-white'
           >
@@ -67,6 +115,7 @@ export function ContactForm() {
             className='shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5'
             placeholder='John Doe'
             required
+            autoComplete='name'
           />
         </div>
         <div>
@@ -83,23 +132,50 @@ export function ContactForm() {
             className='shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 '
             placeholder='name@flowbite.com'
             required
+            autoComplete='email'
           />
         </div>
         <div>
           <label
-            htmlFor='email'
+            htmlFor='countrycodes'
             className='block mb-2 text-sm font-medium text-white'
           >
-            Teléfono
+            Codigo de país + número de teléfono
           </label>
-          <input
-            type='tel'
-            id='phone'
-            name='phone'
-            className='shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 '
-            placeholder='55 5555 5555'
-            required
-          />
+          <div className='w-full  rounded-md shadow-md flex'>
+            <div className='w-52'>
+              <select
+                className='block w-full mt-1 p-2 text-gray-700 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-500'
+                value={selectedCountryCode}
+                onChange={handleCountryCodeChange}
+                required
+                id='countrycodes'
+                name='countrycodes'
+              >
+                <option value='52' defaultValue={52}>
+                  MX 52
+                </option>
+                {countrycodes.map((country, index) => (
+                  <option key={index} value={country.code}>
+                    {`${country.iso} (${country.code})`}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className='w-full'>
+              <input
+                className='block w-full mt-1 p-2 text-gray-700 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-500'
+                type='number'
+                value={phoneNumber}
+                onChange={handlePhoneNumberChange}
+                placeholder='Enter phone number'
+                required
+                id='phone'
+                name='phone'
+                autoComplete='phone'
+              />
+            </div>
+          </div>
         </div>
         <div className='sm:col-span-2'>
           <label
