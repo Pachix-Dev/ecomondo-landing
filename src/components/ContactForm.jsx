@@ -99,6 +99,7 @@ export function ContactForm() {
             <option value='Cuidado y manejo del agua'>
               Cuidado y manejo del agua
             </option>
+            <option value='Otros'>Otros</option>
           </select>
         </div>
         <div>
