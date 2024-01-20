@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { countrycodes } from '../lib/countrycodes'
+import { useZustandStore } from '../store/form-store'
 
 export function ContactForm() {
   const [selectedCountryCode, setSelectedCountryCode] = useState('')
@@ -45,6 +46,7 @@ export function ContactForm() {
           setResponse(
             '¡Gracias por contactarnos! En breve nos pondremos en contacto contigo.'
           )
+          useZustandStore.setState({ zustandState: true })
           window.location.href = '/gracias-por-contactarnos'
         } else {
           setSendStatus(false)
