@@ -20,12 +20,13 @@ export function ContactForm() {
   const handleSubmit = async (event) => {
     event.preventDefault()
     const formData = Object.fromEntries(new window.FormData(event.target))
+
     const requestOptions = {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ formData }),
+      body: JSON.stringify({ ...formData }),
     }
 
     try {
