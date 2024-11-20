@@ -31,7 +31,7 @@ export function ContactForm() {
     try {
       setSendStatus(true)
       const statusEmail = await fetch(
-        'https://expositor.ecomondomexico.com.mx/server/expositor-landing-email',
+        'https://ecomondomexico.com.mx/server/expositor-landing-email',
         requestOptions
       )
       const dataEmail = await statusEmail.json()
@@ -186,9 +186,9 @@ export function ContactForm() {
           ></textarea>
         </div>
         {sendStatus ? (
-          <span className='text-white flex'>
+          <span className='text-black flex'>
             <svg
-              className='animate-spin -ml-1 mr-3 h-5 w-5 text-white'
+              className='animate-spin -ml-1 mr-3 h-5 w-5 text-black'
               xmlns='http://www.w3.org/2000/svg'
               fill='none'
               viewBox='0 0 24 24'
@@ -220,7 +220,7 @@ export function ContactForm() {
                 Enviar
               </button>
             ) : (
-              <span className='text-white font-bold rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 mt-10 text-center'>
+              <span className='text-black font-bold rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 mt-10 text-center'>
                 {response}
               </span>
             )}
