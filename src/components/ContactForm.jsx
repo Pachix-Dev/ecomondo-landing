@@ -19,7 +19,6 @@ export function ContactForm() {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-
     const formData = Object.fromEntries(new window.FormData(event.target))
     const requestOptions = {
       method: 'POST',
@@ -28,34 +27,24 @@ export function ContactForm() {
       },
       body: JSON.stringify({ formData }),
     }
+
     try {
       setSendStatus(true)
-      const res = await fetch(
-        'https://hfmexico.mx/ecomondo/newsletter/landingPage.php',
+      const statusEmail = await fetch(
+        'https://expositor.ecomondomexico.com.mx/server/expositor-landing-email',
         requestOptions
       )
-      const data = await res.json()
-      if (data.status) {
-        const statusEmail = await fetch(
-          'https://hfmexico.mx/foro-electromovilidad/backend/email/send-email-ecomondo',
-          requestOptions
+      const dataEmail = await statusEmail.json()
+      if (dataEmail.status) {
+        setSendStatus(false)
+        setResponse(
+          '¡Gracias por contactarnos! En breve nos pondremos en contacto contigo.'
         )
-        const dataEmail = await statusEmail.json()
-        if (dataEmail.status) {
-          setSendStatus(false)
-          setResponse(
-            '¡Gracias por contactarnos! En breve nos pondremos en contacto contigo.'
-          )
-          useZustandStore.setState({ zustandState: true })
-          window.location.href = '/gracias-por-contactarnos'
-        } else {
-          setSendStatus(false)
-          setResponse(
-            'Lo sentimos en este momento no es posible enviar tu información...'
-          )
-        }
+        useZustandStore.setState({ zustandState: true })
+        window.location.href = '/gracias-por-contactarnos'
       } else {
-        setMessage(
+        setSendStatus(false)
+        setResponse(
           'Lo sentimos en este momento no es posible enviar tu información...'
         )
       }
@@ -75,13 +64,13 @@ export function ContactForm() {
     <>
       <form
         id='form-contact'
-        className='mt-10 space-y-10 w-8/12 mx-auto'
+        className='mt-10 space-y-5 w-8/12 mx-auto'
         onSubmit={handleSubmit}
       >
         <div>
           <label
             htmlFor='sector'
-            className='block mb-2 text-sm font-medium text-white'
+            className='block mb-1 text-sm font-medium text-black'
           >
             Sector
           </label>
@@ -101,13 +90,13 @@ export function ContactForm() {
             <option value='Cuidado y manejo del agua'>
               Cuidado y manejo del agua
             </option>
-            <option value='Otros'>Otros</option>
+            <option value='Ciudades Sostenibles'>Ciudades Sostenibles</option>
           </select>
         </div>
         <div>
           <label
             htmlFor='name'
-            className='block mb-2 text-sm font-medium text-white'
+            className='block mb-1 text-sm font-medium text-black'
           >
             Nombre
           </label>
@@ -124,7 +113,7 @@ export function ContactForm() {
         <div>
           <label
             htmlFor='email'
-            className='block mb-2 text-sm font-medium text-white'
+            className='block mb-1 text-sm font-medium text-black'
           >
             Email
           </label>
@@ -141,7 +130,7 @@ export function ContactForm() {
         <div>
           <label
             htmlFor='countrycodes'
-            className='block mb-2 text-sm font-medium text-white'
+            className='block mb-1 text-sm font-medium text-black'
           >
             Codigo de país + número de teléfono
           </label>
@@ -183,7 +172,7 @@ export function ContactForm() {
         <div className='sm:col-span-2'>
           <label
             htmlFor='message'
-            className='block mb-2 text-sm font-medium text-white'
+            className='block mb-1 text-sm font-medium text-black'
           >
             Mensaje
           </label>

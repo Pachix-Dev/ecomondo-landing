@@ -24,6 +24,6 @@ jobs:
           server: '${{ secrets.SERVER }}'
           port: '${{ secrets.SSH_PORT }}'
           local_path: './dist/*'
-          remote_path: '/home/hfmexico/public_html/ecomondo.igeco.mx'
+          remote_path: '/home/ecomondomexicoco/public_html/expositor.ecomondomexico.com.mx'
           sftp_only: true
           password: '${{ secrets.SFTP_PASSWORD }}'
