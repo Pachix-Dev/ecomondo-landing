@@ -3,81 +3,14 @@ import { ContactForm } from '../components/ContactForm'
 import Results from '../components/Results.astro'
 import Experiencies from '../components/Experiencies.astro'
 import Layout from '../layouts/Layout.astro'
+import Hero from '../components/Hero.astro'
 ---
 
 <Layout title='Ecomondo Mexico'>
   <main>
     <!-- KEYVISUAL -->
-    <section
-      class='bg-[url("/bg_ecomodno_2026.webp")] h-full md:h-screen grid place-items-center py-16 relative'
-      style='text-shadow: 4px 4px 12px black'
-    >
-      <div class='absolute inset-0 bg-black/40'></div>
-      <div class='flex flex-col justify-center items-center px-2 relative z-10'>
-        <div>
-          <img
-            src='/ecomondo_logo_2025.webp'
-            alt='key visual ecomondo'
-            class='md:h-[150px] h-[80px] custom-shadow'
-            loading='lazy'
-          />
-        </div>
-        <div class='pt-5 text-white'>
-          <p class='md:text-5xl sm:text-4xl text-2xl text-center font-bold'>
-            14 - 16 abril, 2026
-          </p>
-          <p class='text-center sm:text-4xl text-2xl my-3 font-bold'>
-            Expo Guadalajara, Jalisco, México
-          </p>
-          <div
-            class='mt-10 mb-10 grid md:flex gap-10 justify-center items-center'
-            style='text-shadow: none'
-          >
-            <div
-              class='bg-[#027c82] hover:bg-gray-500 text-white font-bold border rounded-lg p-2 text-xl'
-            >
-              <a href='#expositor' class=''>¿Quieres ser<br /> Expositor?</a>
-            </div>
-            <div
-              class='bg-[#027c82] hover:bg-gray-500 text-white font-bold border rounded-lg p-2 text-xl'
-            >
-              <a href='https://hfmexico.mx/ecomondo/' target='_blank' class=''
-                >Conoce más <br />sobre Ecomondo</a
-              >
-            </div>
-            <div
-              class='bg-[#027c82] hover:bg-gray-500 text-white font-bold border rounded-lg p-2 text-xl'
-            >
-              <a
-                href='https://ecomondomexico.com.mx/files/PATROCINIOS-ECOMONDO-2025-ESP-AC_compressed.pdf'
-                target='_blank'
-                class=''>Quiero ser <br />patrocinador</a
-              >
-            </div>
-          </div>
-          <p class='text-white text-4xl font-bold text-center'>
-            ¡Impulsa tu negocio en México con la experiencia de Ecomondo!
-          </p>
-          <div
-            class='logos flex flex-wrap justify-center items-center gap-8 mt-10'
-          >
-            <img
-              src='/igeco_bn.webp'
-              alt='igeco_logo'
-              class='md:h-14 h-14'
-              loading='lazy'
-            />
-            <img
-              src='/deutsche_messe_bn.webp'
-              alt='deutsche_messe_logo'
-              class='md:h-14 h-14'
-              loading='lazy'
-            />
-          </div>
-        </div>
-      </div>
-    </section>
-
+     <Hero />
+   
     <article class='pb-10 bg-[url("/bg_ecomondo.webp")] bg-cover '>
       <div class='absolute inset-0 bg-black/5'></div>
       <div class='pt-10 container mx-auto ps-4 pe-4 relative z-10'>
