@@ -71,7 +71,7 @@ export function ContactForm() {
         <div>
           <label
             htmlFor='sector'
-            className='block mb-1 text-sm font-medium text-black'
+            className='block mb-1 text-sm font-medium text-white'
           >
             Sector
           </label>
@@ -97,7 +97,7 @@ export function ContactForm() {
         <div>
           <label
             htmlFor='name'
-            className='block mb-1 text-sm font-medium text-black'
+            className='block mb-1 text-sm font-medium text-white'
           >
             Nombre
           </label>
@@ -114,7 +114,7 @@ export function ContactForm() {
         <div>
           <label
             htmlFor='email'
-            className='block mb-1 text-sm font-medium text-black'
+            className='block mb-1 text-sm font-medium text-white'
           >
             Email
           </label>
@@ -131,11 +131,11 @@ export function ContactForm() {
         <div>
           <label
             htmlFor='countrycodes'
-            className='block mb-1 text-sm font-medium text-black'
+            className='block mb-1 text-sm font-medium text-white'
           >
             Codigo de país + número de teléfono
           </label>
-          <div className='w-full  rounded-md shadow-md flex'>
+          <div className='w-full  rounded-md flex gap-4'>
             <div className='w-52'>
               <select
                 className='block w-full mt-1 p-2 text-gray-700 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-500'
@@ -173,7 +173,7 @@ export function ContactForm() {
         <div className='sm:col-span-2'>
           <label
             htmlFor='message'
-            className='block mb-1 text-sm font-medium text-black'
+            className='block mb-1 text-sm font-medium text-white'
           >
             Mensaje
           </label>
@@ -187,9 +187,9 @@ export function ContactForm() {
           ></textarea>
         </div>
         {sendStatus ? (
-          <span className='text-black flex'>
+          <span className='text-white flex'>
             <svg
-              className='animate-spin -ml-1 mr-3 h-5 w-5 text-black'
+              className='animate-spin -ml-1 mr-3 h-5 w-5 text-white'
               xmlns='http://www.w3.org/2000/svg'
               fill='none'
               viewBox='0 0 24 24'
@@ -221,7 +221,7 @@ export function ContactForm() {
                 Enviar
               </button>
             ) : (
-              <span className='text-black font-bold rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 mt-10 text-center'>
+              <span className='text-white font-bold rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 mt-10 text-center'>
                 {response}
               </span>
             )}

@@ -1,0 +1,28 @@
+---
+import { ContactForm } from "./ContactForm";
+---
+ <section class="py-16 md:py-20 bg-gradient-to-r from-teal-600 to-teal-700 relative overflow-hidden">
+      <div class="absolute inset-0 opacity-10">
+        <div class="absolute -top-10 -right-10 w-64 h-64 bg-white rounded-full blur-3xl"></div>
+        <div class="absolute -bottom-10 -left-10 w-80 h-80 bg-white rounded-full blur-3xl"></div>
+      </div>
+      <div class="container mx-auto px-4 relative z-10">
+        <div class="max-w-4xl mx-auto text-center">
+          <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight mb-6">
+            ¡Aprovecha esta gran oportunidad para convertirte en 
+            <span class="inline-block relative">
+              <span class="relative z-10">expositor!</span>
+            </span>
+          </h2>
+          <p class="text-lg md:text-xl text-teal-50 max-w-2xl mx-auto mb-8">
+            Completa el formulario y nuestro equipo te contactará con información exclusiva sobre stands, beneficios y precios especiales.
+          </p>
+          <div class="flex justify-center">
+            <svg class="w-8 h-8 text-white animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+            </svg>
+          </div>
+        </div>
+        <ContactForm client:visible />
+      </div>
+    </section>
