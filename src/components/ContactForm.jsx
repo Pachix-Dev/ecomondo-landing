@@ -65,7 +65,7 @@ export function ContactForm() {
     <>
       <form
         id='form-contact'
-        className='mt-10 space-y-5 w-8/12 mx-auto'
+        className='mt-10 space-y-5 md:w-8/12 mx-auto'
         onSubmit={handleSubmit}
       >
         <div>

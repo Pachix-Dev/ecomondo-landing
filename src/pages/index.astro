@@ -6,6 +6,7 @@ import Layout from '../layouts/Layout.astro'
 import Hero from '../components/Hero.astro'
 import EcomondoIntro from '../components/EcomondoIntro.astro'
 import ContactSection from '../components/ContactSection.astro'
+import WhyExhibit from '../components/WhyExhibit.astro'
 ---
 
 <Layout title='Ecomondo Mexico'>
@@ -14,48 +15,7 @@ import ContactSection from '../components/ContactSection.astro'
      <Hero />
     <EcomondoIntro />
     <ContactSection />
-    <section class='text-[#545454] pt-10 container mx-auto ps-4 pe-4'>
-      <p class='text-4xl'>¿POR QUÉ <strong>PARTICIPAR?</strong></p>
-      <div
-        class='mt-10 grid md:grid-cols-5 sm:grid-cols-3 justify-center items gap-2'
-      >
-        <div class='grid place-items-center'>
-          <img src='/icon1.webp' width='70' alt='crecimiento sostenible' />
-          <p class='text-center text-sm font-bold'>
-            Lleve a su empresa a un crecimiento sostenible.
-          </p>
-        </div>
-        <div class='grid place-items-center'>
-          <img src='/icon2.webp' width='70' alt='negocios sostenibles' />
-          <p class='text-center text-sm font-bold'>
-            Conviértase en pionero de los negocios verdes.
-          </p>
-        </div>
-        <div class='grid place-items-center'>
-          <img src='/icon3.webp' width='70' alt='economía circular' />
-          <p class='text-center text-sm font-bold'>
-            Conozca las últimas tendencias e innovaciones de la industria.
-          </p>
-        </div>
-        <div class='grid place-items-center'>
-          <img src='/icon4.webp' width='70' alt='alianza estrategica' />
-          <p class='text-center text-sm font-bold'>
-            Genere alianzas estratégicas y expanda su red de contactos.
-          </p>
-        </div>
-        <div class='grid place-items-center'>
-          <img
-            src='/icon5.webp'
-            width='70'
-            alt='conocimiento para la sostenibilidad de las industrias'
-          />
-          <p class='text-center text-sm font-bold'>
-            Obtenga el conocimiento más especializado para la sostenibilidad de
-            las industrias
-          </p>
-        </div>
-      </div>
-    </section>
+    <WhyExhibit />
     <section>
       <Results />
     </section>
