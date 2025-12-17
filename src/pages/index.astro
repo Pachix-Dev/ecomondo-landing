@@ -4,59 +4,15 @@ import Results from '../components/Results.astro'
 import Experiencies from '../components/Experiencies.astro'
 import Layout from '../layouts/Layout.astro'
 import Hero from '../components/Hero.astro'
+import EcomondoIntro from '../components/EcomondoIntro.astro'
 ---
 
 <Layout title='Ecomondo Mexico'>
   <main>
     <!-- KEYVISUAL -->
      <Hero />
-   
-    <article class='pb-10 bg-[url("/bg_ecomondo.webp")] bg-cover '>
-      <div class='absolute inset-0 bg-black/5'></div>
-      <div class='pt-10 container mx-auto ps-4 pe-4 relative z-10'>
-        <div class='border-s ps-4 pb-10 relative'>
-          <div
-            class='absolute w-3 h-3 bg-gray-200 rounded-full -start-1.5 border border-white'
-          >
-          </div>
-          <p>
-            <strong>ECOMONDO MEXICO</strong> es el único evento en la región de Jalisco
-            dedicado a la promoción del desarrollo sustentable y la conservación
-            de los recursos naturales. El evento reúne innovaciones tecnológicas
-            ecológicas y experiencia en gestión de residuos, bioenergía y seguimiento
-            y gestión del ciclo del agua.
-          </p>
-          <p class='mt-4 font-bold'>
-            Esta es una oportunidad única para que las empresas jaliscienses
-            puedan:
-          </p>
-          <ul class='list-disc ps-8 pt-3'>
-            <li>
-              Presentar sus soluciones y tecnologías innovadoras a una audiencia
-              calificada de profesionales y tomadores de decisiones
-            </li>
-            <li>Acelerar las oportunidades de negocio</li>
-            <li>Tomar la iniciativa en un entorno cada vez más complejo</li>
-            <li>Ampliar alianzas estratégicas</li>
-          </ul>
-          <p class='mt-4'>
-            Si estás interesado en asistir a Ecomondo México, ¡Déjanos tus datos
-            de contacto ahora! Garantizamos soporte dedicado así como un
-            descuento especial...
-          </p>
-          <p class='mt-4 font-bold'>
-            ¡No pierdas esta oportunidad única de promocionar tu empresa y
-            contribuir a la sostenibilidad de tu región!
-          </p>
-        </div>
-      </div>
-      <section class='mt-10' id='expositor'>
-        <p class='text-4xl font-bold text-center'>
-          ¡Aprovecha esta gran oportunidad para convertirte en expositor!
-        </p>
-        <ContactForm client:visible />
-      </section>
-    </article>
+    <EcomondoIntro />
+    <ContactForm client:visible />
     <section class='text-[#545454] pt-10 container mx-auto ps-4 pe-4'>
       <p class='text-4xl'>¿POR QUÉ <strong>PARTICIPAR?</strong></p>
       <div
