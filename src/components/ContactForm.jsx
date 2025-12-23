@@ -1,26 +1,43 @@
+
+// Importa React useState para manejar el estado local del formulario
 import { useState } from 'react'
+// Importa la lista de códigos de país
 import { countrycodes } from '../lib/countrycodes'
+// Importa el store de Zustand para manejar el estado global del formulario
 import { useZustandStore } from '../store/form-store'
 
+
+// Componente principal del formulario de contacto
 export function ContactForm() {
+  // Estado para el código de país seleccionado (por defecto México '52')
   const [selectedCountryCode, setSelectedCountryCode] = useState('52')
+  // Estado para el número de teléfono ingresado
   const [phoneNumber, setPhoneNumber] = useState('')
 
+  // Estado para la respuesta del servidor tras enviar el formulario
   const [response, setResponse] = useState('')
+  // Estado para indicar si el formulario está enviando datos
   const [sendStatus, setSendStatus] = useState(false)
 
+  // Maneja el cambio del código de país en el select
   const handleCountryCodeChange = (event) => {
     setSelectedCountryCode(event.target.value)
   }
 
+  // Maneja el cambio en el input del número de teléfono
   const handlePhoneNumberChange = (event) => {
     setPhoneNumber(event.target.value)
   }
 
+  // Maneja el envío del formulario
+  // Realiza una petición POST al servidor con los datos del formulario
+  // Muestra mensajes de éxito o error según la respuesta
   const handleSubmit = async (event) => {
     event.preventDefault()
+    // Obtiene los datos del formulario como objeto
     const formData = Object.fromEntries(new window.FormData(event.target))
 
+    // Opciones para la petición fetch
     const requestOptions = {
       method: 'POST',
       headers: {
@@ -31,6 +48,7 @@ export function ContactForm() {
 
     try {
       setSendStatus(true)
+      // Envía los datos al endpoint del servidor
       const statusEmail = await fetch(
         'https://ecomondomexico.com.mx/server/expositor-landing-email',
         requestOptions
@@ -41,7 +59,9 @@ export function ContactForm() {
         setResponse(
           '¡Gracias por contactarnos! En breve nos pondremos en contacto contigo.'
         )
+        // Actualiza el estado global con Zustand
         useZustandStore.setState({ zustandState: true })
+        // Redirige a la página de agradecimiento
         window.location.href = '/gracias-por-contactarnos'
       } else {
         setSendStatus(false)
@@ -50,6 +70,7 @@ export function ContactForm() {
         )
       }
     } catch (error) {
+      // Manejo de errores en la petición
       console.log(error)
       setSendStatus(false)
       setResponse(
@@ -57,18 +78,21 @@ export function ContactForm() {
       )
     } finally {
       setSendStatus(false)
+      // Resetea el formulario visualmente
       document.getElementById('form-contact').reset()
     }
   }
 
   return (
     <>
+      {/* Formulario principal de contacto */}
       <form
         id='form-contact'
         className='mt-10 md:w-8/12 mx-auto space-y-5 bg-gray-900 rounded-2xl p-6 md:p-8 shadow-lg border border-gray-800'
         onSubmit={handleSubmit}
         aria-busy={sendStatus}
       >
+        {/* Encabezado del formulario */}
         <div className='text-center mb-2'>
           <h2 className='text-white text-xl md:text-2xl font-semibold'>
             Contáctanos
@@ -78,12 +102,35 @@ export function ContactForm() {
           </p>
         </div>
 
+        {/* Empresa: Nombre de la empresa que desea participar. Obligatorio. */}
+        <div>
+          <label
+            htmlFor='company'
+            className='block mb-1 text-sm font-medium text-white'
+          >
+            <span>Empresa</span>
+            <span className='' aria-hidden='true'>*</span>
+          </label>
+          <input
+            type='text'
+            id='company'
+            name='company'
+            className='shadow-sm bg-white border border-[#858C7E]/40 text-gray-900 text-sm rounded-lg focus:ring-[#1F5E00] focus:border-[#1F5E00] block w-full p-3'
+            placeholder='Empresa S.A. de C.V.'
+            required
+            autoComplete='organization'
+            aria-required='true'
+          />
+        </div>
+
+        {/* Selector de sector */}
         <div>
           <label
             htmlFor='sector'
             className='block mb-1 text-sm font-medium text-white'
           >
-            Sector
+            <span>Sector</span>
+            <span className='' aria-hidden='true'>*</span>
           </label>
           <select
             id='sector'
@@ -104,12 +151,14 @@ export function ContactForm() {
           </select>
         </div>
 
+        {/* Campo para el nombre del usuario */}
         <div>
           <label
             htmlFor='name'
             className='block mb-1 text-sm font-medium text-white'
           >
-            Nombre
+            <span>Nombre</span>
+            <span className='' aria-hidden='true'>*</span>
           </label>
           <input
             type='text'
@@ -123,12 +172,14 @@ export function ContactForm() {
           />
         </div>
 
+        {/* Campo para el email del usuario */}
         <div>
           <label
             htmlFor='email'
             className='block mb-1 text-sm font-medium text-white'
           >
-            Email
+            <span>Email</span>
+            <span className='' aria-hidden='true'>*</span>
           </label>
           <input
             type='email'
@@ -142,14 +193,17 @@ export function ContactForm() {
           />
         </div>
 
+        {/* Selector de código de país y campo de teléfono */}
         <div>
           <label
             htmlFor='countrycodes'
             className='block mb-1 text-sm font-medium text-white'
           >
-            Código de país + número de teléfono
+            <span>Código de país + número de teléfono</span>
+            <span className='' aria-hidden='true'>*</span>
           </label>
           <div className='w-full rounded-md flex gap-4'>
+            {/* Selector de código de país */}
             <div className='w-52'>
               <select
                 className='block w-full p-2 text-gray-700 bg-gray-50 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500'
@@ -168,6 +222,7 @@ export function ContactForm() {
                 ))}
               </select>
             </div>
+            {/* Input para el número de teléfono */}
             <div className='w-full'>
               <input
                 className='block w-full p-2 text-gray-700 bg-gray-50 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500'
@@ -184,6 +239,7 @@ export function ContactForm() {
                 aria-describedby='phone-help'
                 disabled={sendStatus}
               />
+              {/* Ayuda para el campo de teléfono */}
               <p id='phone-help' className='text-gray-400 text-xs mt-1'>
                 Solo números, sin espacios ni símbolos.
               </p>
@@ -191,12 +247,14 @@ export function ContactForm() {
           </div>
         </div>
 
+        {/* Campo para el mensaje del usuario */}
         <div className='sm:col-span-2'>
           <label
             htmlFor='message'
             className='block mb-1 text-sm font-medium text-white'
           >
-            Mensaje
+            <span>Mensaje</span>
+            <span className='' aria-hidden='true'>*</span>
           </label>
           <textarea
             id='message'
@@ -209,7 +267,9 @@ export function ContactForm() {
           ></textarea>
         </div>
 
+        {/* Indicador de envío o botón de enviar */}
         {sendStatus ? (
+          // Muestra un spinner mientras se envía el formulario
           <span
             className='text-white flex items-center'
             role='status'
@@ -238,6 +298,7 @@ export function ContactForm() {
             Enviando...
           </span>
         ) : (
+          // Botón de enviar o mensaje de respuesta
           <>
             {response === '' ? (
               <button
@@ -248,6 +309,7 @@ export function ContactForm() {
                 Enviar
               </button>
             ) : (
+              // Mensaje de respuesta tras enviar el formulario
               <span
                 className='text-white font-bold rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 mt-2 text-center block'
                 role='status'
